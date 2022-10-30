@@ -65,13 +65,75 @@ namespace MenuLibrary {
         ///    &lt;nav class=&quot;nav&quot;&gt;
         ///        &lt;div&gt;
         ///            &lt;div class=&quot;nav_list nav_top&quot;&gt; 
-        ///                &lt;a class=&quot;nav_link       &quot; asp-area=&quot;&quot; asp-controller=&quot;Map&quot;     asp-action=&quot;Map&quot;&gt;   &lt;i class=&quot;fas fa-map&quot;&gt;   &lt;/i&gt; &lt;span class=&quot;nav_name&quot;&gt;Map&lt;/span&gt; &lt;/a&gt;
-        ///                &lt;a class=&quot;nav_link       &quot; asp-area=&quot;&quot; asp-controller=&quot;Home&quot;    asp-action=&quot;Docs&quot;&gt;  &lt;i class=&quot;fas fa-book&quot;&gt;  &lt;/i&gt; &lt;span class=&quot;nav_name&quot;&gt;Documentation&lt;/span&gt; &lt;/a&gt;
-        ///                &lt;a class=&quot;nav_link       &quot; [rest of string was truncated]&quot;;.
+        ///                {{MENU_LIST}}
+        ///            &lt;/div&gt;
+        ///            &lt;div class=&quot;nav_list nav_bottom&quot;&gt;
+        ///                  &lt;a class=&quot;nav_link&quot;&gt;&lt;i id=&quot;header-toggle&quot; class=&quot;fas fa-angles-right&quot;&gt;&lt;/i&gt;&lt;span class=&quot;nav_name&quot;&gt;Shrink&lt;/span&gt;&lt;/a&gt;
+        ///            &lt;/div&gt;
+        ///        &lt;/div&gt;
+        ///    &lt;/nav&gt;
+        ///&lt;/div&gt;.
         /// </summary>
         internal static string Index {
             get {
                 return ResourceManager.GetString("Index", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to // Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+        ///// for details on configuring this project to bundle and minify static web assets.
+        ///
+        ///// Write your JavaScript code.
+        ///document.addEventListener(&quot;DOMContentLoaded&quot;, function (event) {
+        ///
+        ///    showNavbar()
+        ///
+        ///    const linkColor = document.querySelectorAll(&apos;.nav_link&apos;)
+        ///
+        ///    function colorLink() {
+        ///        if (linkColor) {
+        ///            linkColor.forEach(l =&gt; l.classList.remove(&apos;active&apos;))
+        ///            t [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string menu {
+            get {
+                return ResourceManager.GetString("menu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 
+        ///html {
+        ///    font-size: 14px;
+        ///}
+        ///
+        ///@media (min-width: 768px) {
+        ///  html {
+        ///    font-size: 16px;
+        ///  }
+        ///}
+        ///
+        ///:root {
+        ///    --header-height: 2rem;
+        ///    --nav-width: 68px;
+        ///    --body-font: &apos;Nunito&apos;, sans-serif;
+        ///    --normal-font-size: 1rem;
+        ///    --z-fixed: 100;
+        ///    --white-color: #838383;
+        ///    --hover-color: #496f88;
+        ///    --left-menu-background-color: #e9e7ef;
+        ///    --left-menu-foreground-color: #838383;
+        ///    --header-background-color: #9010c3;
+        ///    --header-foreground-color: #e9e7ef;
+        ///}
+        ///
+        ///.connected {
+        ///     [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string Styles {
+            get {
+                return ResourceManager.GetString("Styles", resourceCulture);
             }
         }
     }

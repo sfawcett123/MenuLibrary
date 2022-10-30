@@ -11,11 +11,14 @@ namespace MenuLibrary
     {
         private string? _name;
         private string? _icon;
+        private string? _route;
+
         public bool Display { get; set; }
         public string? Name { get => _name ?? Action; set => _name = value; }
         public string? Icon { get => _icon ?? "fa-circle"; set => _icon = value; }
         public string? Controller { get; set; }
         public string? Action { get; set; }
+        public string? Route { get => _route ?? "Home"; set => _route = value; }
 
         public string PrintOut()
         {
