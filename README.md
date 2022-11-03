@@ -3,6 +3,7 @@
 ## To include
 
 ```html
+@using MenuLibrary
 @Html.Raw( Menu.Css() )
 @Html.Raw( Menu.Scripts() )
 
