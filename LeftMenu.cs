@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json.Serialization;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -9,35 +11,44 @@ namespace MenuLibrary
 {
     public class LeftMenu 
     {
-        public static string Display(List<Type> subClasses)
+    private class DataType 
+    { 
+        public int order;
+        public string? row;
+
+            public DataType(int order, string? row)
+            {
+                this.order = order;
+                this.row = row;
+            }
+        }
+    public static string Display(List<Type> subClasses)
         {
-            string controllerNames = "";
+            List<DataType> controllerNames = new List<DataType>();
+
             string FMT = "<a class=\"nav_link  \" href=\"/{2}\">  <i id=\"debug-menu\" class=\"fas {1}\">   </i> <span class=\"nav_name\">{0}</span> </a>";
             foreach (Type controller in subClasses)
             {
-                MenuAttributes? ta =  MenuHelpers.GetAttributeArray(controller);
-
-                if (ta is not null)
-                {
-                    //ta.Route = GetRoute(controller, "Index");
-                    controllerNames += string.Format(FMT, ta.Name, ta.Icon, ta.Route) + "\n";
-                }
-
                 foreach (MethodInfo action in controller.GetMethods())
                 {
-                    ta = MenuHelpers.GetAttributeArray(action);
+                    List<MenuAttributes>? ta = MenuHelpers.GetAttributes<MenuAttributes>(action);
 
-                    if (ta is not null)
+                    if (ta is not null )
                     {
-                        ta.Route = MenuHelpers.GetRoute(controller, action);
+                        foreach (MenuAttributes attr in ta)
+                        {  
+                            Console.WriteLine( attr.ToString() );
 
-                        controllerNames += string.Format(FMT, ta.Name, ta.Icon, ta.Route) + "\n";
+                            attr.Route = MenuHelpers.GetRoute(controller, action);
+
+                            controllerNames.Add( new DataType( attr.Order, string.Format(FMT, attr.Name, attr.Icon, attr.Route) + "\n" ) );
+                        }
                     }
 
                 }
             }
 
-            return MenuHelpers.ReadResource(controllerNames);
+            return MenuHelpers.ReadResource(controllerNames.OrderBy(o => o.order).Select(o => o.row).ToList());
         }
     }
 }

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
+using System.Diagnostics.Metrics;
 using System.Reflection;
 
 
@@ -9,14 +10,9 @@ namespace MenuLibrary
 {
     internal class MenuHelpers
     {
-        public static MenuAttributes? GetAttributeArray(Type obj)
+        public static List<MenuAttributes>? GetAttributes<T>(MemberInfo member) 
         {
-            return (MenuAttributes?)obj.GetCustomAttribute(typeof(MenuAttributes));
-        }
-
-        public static MenuAttributes? GetAttributeArray(MethodInfo obj)
-        {
-            return (MenuAttributes?)obj.GetCustomAttribute(typeof(MenuAttributes));
+            return member.GetCustomAttributes(typeof(MenuAttributes)).Select(attr => (MenuAttributes)attr).ToList();
         }
 
         public static string GetRoute(Type controller, MethodInfo method)
@@ -27,9 +23,14 @@ namespace MenuLibrary
 
             return controller.Name.Replace("Controller", "") + "/" + method.Name;
         }
-        public static string ReadResource(string MENU_LIST)
+        public static string ReadResource(List<string> MENU_LIST)
         {
-            return BaseHtml.Index.Replace("{{MENU_LIST}}", MENU_LIST);
+            string big_string = "";
+            foreach( string a in MENU_LIST)
+            {
+                big_string += a;
+            }
+            return BaseHtml.Index.Replace("{{MENU_LIST}}", big_string);
         }
     }
 
