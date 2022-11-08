@@ -26,7 +26,7 @@ namespace MenuLibrary
         {
             List<DataType> controllerNames = new List<DataType>();
 
-            string FMT = "<a class=\"nav_link  \" href=\"/{2}\">  <i id=\"debug-menu\" class=\"fas {1}\">   </i> <span class=\"nav_name\">{0}</span> </a>";
+            string FMT = "<a class=\"nav_link\" href=\"/{2}\">  <i id=\"debug-menu\" class=\"fas {1}\">   </i> <span class=\"nav_name\">{0}</span> </a>";
             foreach (Type controller in subClasses)
             {
                 foreach (MethodInfo action in controller.GetMethods())
