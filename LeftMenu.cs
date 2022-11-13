@@ -1,54 +1,78 @@
-﻿using Newtonsoft.Json.Serialization;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Microsoft.AspNetCore.Routing;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
+using System.Runtime.CompilerServices;
+using System.Xml.Linq;
 
 namespace MenuLibrary
 {
     public class LeftMenu 
     {
-    private class DataType 
-    { 
-        public int order;
-        public string? row;
+        static public string ClassNavItem { get; set; } = "sf_menu_nav_item";
+        static public string ClassNavLink { get; set; } = "sf_menu_nav_link";
+        static public string ClassNavList { get; set; } = "nav_list";
+        static public string ClassNav    { get; set; } = "sf_menu_nav";
+        static public string ClassNavBar { get; set; } = "sf_menu_nav_bar";
+        static public string ClassNavTop { get; set; } = "sf_menu_nav_top";
+        static public string ClassNavBottom { get; set; } = "sf_menu_nav_bottom";
+        static public string IconRight { get; set; } = "fa-angles-right";
+        static public string IconLeft { get; set; } = "fa-angles-left";
+        static public string IconGroup { get; set; } = "fas";
+        static public Dictionary<string, string> ToDict()
+        {
+            Dictionary<string, string> attr = new(){
+                {"ClassNavItem"   , ClassNavItem } ,
+                {"ClassNavLink"   , ClassNavLink } ,
+                {"ClassNavTop"    , ClassNavTop } ,
+                {"ClassNavBottom" , ClassNavBottom } ,
+                {"ClassNavBar"    , ClassNavBar },
+                {"ClassNavList"   , ClassNavList },
+                {"IconGroup"      , IconGroup },
+                {"IconRight"      , IconRight },
+                {"IconLeft"      ,  IconLeft },
+                {"ClassNav"       , ClassNav    }
+            };
+            return attr;
+        }
+        private class DataType 
+        { 
+            public int order;
+            public string? row;
+
 
             public DataType(int order, string? row)
             {
-                this.order = order;
-                this.row = row;
+                    this.order = order;
+                    this.row = row;
             }
         }
-    public static string Display(List<Type> subClasses)
+        public static string Display( List<Type> subClasses)
         {
-            List<DataType> controllerNames = new List<DataType>();
-
-            string FMT = "<a class=\"nav_link\" href=\"/{2}\">  <i id=\"debug-menu\" class=\"fas {1}\">   </i> <span class=\"nav_name\">{0}</span> </a>";
-            foreach (Type controller in subClasses)
-            {
-                foreach (MethodInfo action in controller.GetMethods())
-                {
-                    List<MenuAttributes>? ta = MenuHelpers.GetAttributes<MenuAttributes>(action);
-
-                    if (ta is not null )
-                    {
-                        foreach (MenuAttributes attr in ta)
-                        {  
-                            Console.WriteLine( attr.ToString() );
-
-                            attr.Route = MenuHelpers.GetRoute(controller, action);
-
-                            controllerNames.Add( new DataType( attr.Order, string.Format(FMT, attr.Name, attr.Icon, attr.Route) + "\n" ) );
-                        }
-                    }
-
-                }
-            }
-
-            return MenuHelpers.ReadResource(controllerNames.OrderBy(o => o.order).Select(o => o.row).ToList());
+            return Display(ToDict(), subClasses);
         }
-    }
+        public static string Display(Dictionary<string, string> dict,  List<Type> subClasses)
+            {
+                List<DataType> controllerNames = new();
+
+                foreach (Type controller in subClasses)
+                {
+                    foreach (MethodInfo action in controller.GetMethods())
+                    {
+                        List<MenuAttributes>? ta = MenuHelpers.GetAttributes<MenuAttributes>(action);
+
+                        if (ta is not null )
+                        {
+                            foreach (MenuAttributes lattr in ta)
+                            {  
+                                lattr.Route = MenuHelpers.GetRoute(controller, action);
+
+                                controllerNames.Add( new DataType( lattr.Order, BaseHtml.menu_line.Render( lattr.ToDict() ) + "\n" ) );
+                            }
+                        }
+
+                    }
+                }
+         
+                return MenuHelpers.ReadResource(  dict, controllerNames.OrderBy(o => o.order).Select(o => o.row).ToList());
+            }
+        }
 }

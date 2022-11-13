@@ -1,10 +1,7 @@
-﻿using Microsoft.AspNetCore.Html;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using System;
-using System.Diagnostics.Metrics;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Reflection;
-
+using System.Runtime.CompilerServices;
+using System.Text.RegularExpressions;
 
 namespace MenuLibrary
 {
@@ -23,15 +20,46 @@ namespace MenuLibrary
 
             return controller.Name.Replace("Controller", "") + "/" + method.Name;
         }
-        public static string ReadResource(List<string> MENU_LIST)
+        public static string ReadResource(Dictionary<string, string> attr , List<string> MENU_LIST)
         {
             string big_string = "";
             foreach( string a in MENU_LIST)
             {
                 big_string += a;
             }
-            return BaseHtml.Index.Replace("{{MENU_LIST}}", big_string);
+
+            attr.Add( "MENU_LIST" , big_string );   
+
+            return BaseHtml.Index.Render( attr );
+        }
+
+
+    }
+    internal static class Helper
+    {  
+        public static string Render( this string str, Dictionary<string, string> attributes)
+        {
+            String rendererd = str;
+
+
+            foreach ( var item in attributes)
+            {
+                Regex regex = new( "{" + item.Key.ToUpper() + "}" );
+                rendererd = regex.Replace(rendererd, item.Value );
+            }
+
+            return rendererd;
+        }
+
+        public static Dictionary<string, string> Merge(this Dictionary<string, string> x, Dictionary<string, string> y)
+        {
+            Dictionary<string, string> z = x;
+
+            foreach (var item in y ) {
+                z.Add(item.Key, item.Value);
+            }
+
+            return z;
         }
     }
-
 }

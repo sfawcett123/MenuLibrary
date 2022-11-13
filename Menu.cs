@@ -1,23 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Reflection;
 
 namespace MenuLibrary
 {
     public class Menu
     {
-        public static string BODY_ID { get => "body-id";  }
+        public static readonly string BODY_ID = "body-id";
+        private static Dictionary<string, string> Dict  = new()
+        {
+            { "BODY_ID" , BODY_ID }
+        };
+
+
         public static string Css()
         {
-            return string.Format("<style>{0}</style>", BaseHtml.Styles);
+            Dictionary<string, string> att = LeftMenu.ToDict().Merge(Dict );
+            return string.Format("<style>{0}</style>", BaseHtml.Styles.Render( att ));
         }
 
         public static string Scripts()
         {
-            return string.Format("<script>{0}</script>", BaseHtml.menu.Replace("{{BODY_ID}}" , Menu.BODY_ID ));
+            Dictionary<string, string> att = LeftMenu.ToDict().Merge( Dict);
+
+            return string.Format("<script>{0}</script>", BaseHtml.menu.Render( att ));
         }
         public static List<Type> GetSubClasses<T>()
         {

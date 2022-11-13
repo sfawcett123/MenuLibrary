@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MenuLibrary
+﻿namespace MenuLibrary
 {
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = false)]
     public class MenuAttributes : Attribute 
@@ -21,10 +14,27 @@ namespace MenuLibrary
         public string? Controller { get; set; }
         public string? Action { get; set; }
         public string? Route { get => _route ?? "Home"; set => _route = value; }
-
+        public string ClassNavItem { get; set; } = "sf_menu_nav_item";
+        public string ClassNavLink { get; set; } = "sf_menu_nav_link";
+        public string IconGroup { get; set; } = "fas";
         public override string ToString()
         {
             return string.Format("Order = {3} , Display = {0}, Name = {1}, Icon = {2}", Display.ToString(), Name, Icon , Order);
+        }
+
+        public Dictionary<string, string> ToDict()
+        {
+            Dictionary<string, string> attr = new(){
+                {"Name"         , Name },
+                {"Icon"         , Icon },
+                {"IconGroup"    , IconGroup },
+                {"Route"        , Route },
+                {"Order"        , Order.ToString()   },
+                {"Display"      , Display.ToString() },
+                {"ClassNavItem" , ClassNavItem } ,
+                {"ClassNavLink" , ClassNavLink } 
+            };
+            return attr;
         }
     }
 }

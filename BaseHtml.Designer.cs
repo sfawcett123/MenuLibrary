@@ -61,14 +61,14 @@ namespace MenuLibrary {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;div class=&quot;l-navbar&quot; id=&quot;nav-bar&quot;&gt;
-        ///    &lt;nav class=&quot;nav&quot;&gt;
+        ///   Looks up a localized string similar to &lt;div class=&quot;{CLASSNAVBAR}&quot; id=&quot;nav-bar&quot;&gt;
+        ///    &lt;nav class=&quot;{CLASSNAV}&quot;&gt;
         ///        &lt;div&gt;
-        ///            &lt;div class=&quot;nav_list nav_top&quot;&gt; 
-        ///                {{MENU_LIST}}
+        ///            &lt;div class=&quot;{CLASSNAVLIST} {CLASSNAVTOP}&quot;&gt; 
+        ///                {MENU_LIST}
         ///            &lt;/div&gt;
-        ///            &lt;div class=&quot;nav_list nav_bottom&quot;&gt;
-        ///                  &lt;a class=&quot;nav_link&quot;&gt;&lt;i id=&quot;header-toggle&quot; class=&quot;fas fa-angles-right&quot;&gt;&lt;/i&gt;&lt;span class=&quot;nav_name&quot;&gt;Shrink&lt;/span&gt;&lt;/a&gt;
+        ///            &lt;div class=&quot;{CLASSNAVLIST} {CLASSNAVTOP}&quot;&gt;
+        ///                  &lt;a class=&quot;{CLASSNAVLINK}&quot;&gt;&lt;i id=&quot;header-toggle&quot; class=&quot;{ICONGROUP} {ICONRIGHT}&quot;&gt;&lt;/i&gt;&lt;span class=&quot;{CLASSNAVITEM}&quot;&gt;Shrink&lt;/span&gt;&lt;/a&gt;
         ///            &lt;/div&gt;
         ///        &lt;/div&gt;
         ///    &lt;/nav&gt;
@@ -84,17 +84,15 @@ namespace MenuLibrary {
         ///   Looks up a localized string similar to // Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
         ///// for details on configuring this project to bundle and minify static web assets.
         ///
-        ///// Write your JavaScript code.
-        ///document.addEventListener(&quot;DOMContentLoaded&quot;, function (event) {
+        ///function setCookie(cname, cvalue, exdays) {
+        ///    const d = new Date();
+        ///    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+        ///    let expires = &quot;expires=&quot; + d.toUTCString();
+        ///    document.cookie = cname + &quot;=&quot; + cvalue + &quot;;&quot; + expires + &quot;;path=/&quot;;
+        ///}
         ///
-        ///    showNavbar()
-        ///
-        ///    const linkColor = document.querySelectorAll(&apos;.nav_link&apos;)
-        ///
-        ///    function colorLink() {
-        ///        if (linkColor) {
-        ///            linkColor.forEach(l =&gt; l.classList.remove(&apos;active&apos;))
-        ///            t [rest of string was truncated]&quot;;.
+        ///function getCookie(cname) {
+        ///    let name = cname + &quot;=&quot;; [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string menu {
             get {
@@ -103,17 +101,16 @@ namespace MenuLibrary {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &lt;a class=&quot;{CLASSNAVLINK}&quot; href=&quot;/{ROUTE}&quot;&gt; &lt;i id=&quot;debug-menu&quot; class=&quot;{ICONGROUP} {ICON}&quot;&gt;  &lt;/i&gt; &lt;span class=&quot;{CLASSNAVITEM}&quot;&gt;{NAME}&lt;/span&gt; &lt;/a&gt;.
+        /// </summary>
+        internal static string menu_line {
+            get {
+                return ResourceManager.GetString("menu_line", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 
-        ///html {
-        ///    font-size: 14px;
-        ///}
-        ///
-        ///@media (min-width: 768px) {
-        ///  html {
-        ///    font-size: 16px;
-        ///  }
-        ///}
-        ///
         ///:root {
         ///    --header-height: 2rem;
         ///    --nav-width: 68px;
@@ -128,8 +125,12 @@ namespace MenuLibrary {
         ///    --header-foreground-color: #e9e7ef;
         ///}
         ///
-        ///.connected {
-        ///     [rest of string was truncated]&quot;;.
+        ///.sf_menu_nav {
+        ///    height: 100%;
+        ///    display: flex;
+        ///    flex-direction: column;
+        ///    justify-content: space-between;
+        ///    [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Styles {
             get {
