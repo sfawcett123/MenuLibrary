@@ -20,6 +20,7 @@ namespace MenuLibrary
 
             return controller.Name.Replace("Controller", "") + "/" + method.Name;
         }
+
         public static string ReadResource(Dictionary<string, string> attr , List<string> MENU_LIST)
         {
             string big_string = "";
@@ -28,9 +29,7 @@ namespace MenuLibrary
                 big_string += a;
             }
 
-            attr.Add( "MENU_LIST" , big_string );   
-
-            return BaseHtml.Index.Render( attr );
+            return big_string;
         }
 
 

@@ -11,18 +11,6 @@ namespace MenuLibrary
         };
 
 
-        public static string Css()
-        {
-            Dictionary<string, string> att = LeftMenu.ToDict().Merge(Dict );
-            return string.Format("<style>{0}</style>", BaseHtml.Styles.Render( att ));
-        }
-
-        public static string Scripts()
-        {
-            Dictionary<string, string> att = LeftMenu.ToDict().Merge( Dict);
-
-            return string.Format("<script>{0}</script>", BaseHtml.menu.Render( att ));
-        }
         public static List<Type> GetSubClasses<T>()
         {
             return Assembly.GetCallingAssembly().GetTypes().Where(
