@@ -21,12 +21,23 @@ namespace MenuLibrary
             return controller.Name.Replace("Controller", "") + "/" + method.Name;
         }
 
-        public static string ReadResource(Dictionary<string, string> attr , List<string> MENU_LIST)
+        public static string ReadResource(List<LeftMenu.DataType> MENU_LIST)
         {
             string big_string = "";
-            foreach( string a in MENU_LIST)
+            foreach( var top_level in MENU_LIST.Where( x=> x.attributes.Level == MenuAttributes.LEVEL.OUTER ).OrderBy(o => o.attributes.Order))
             {
-                big_string += a;
+                big_string += top_level.row;
+                var children = MENU_LIST.Where(x => x.attributes.Level == MenuAttributes.LEVEL.INNER).Where( x=> x.attributes.Parent == top_level.attributes.Name).OrderBy(o => o.attributes.Order).Select(x => x.row);
+                if( children.Any() )
+                {
+                    big_string += "<ul>";
+                    foreach ( var sub_level in children)
+                    {
+                        Console.WriteLine($"Item {sub_level}");
+                        big_string += sub_level;
+                    }
+                    big_string += "</ul>";
+                }
             }
 
             return big_string;
@@ -40,9 +51,11 @@ namespace MenuLibrary
         {
             String rendererd = str;
 
-
             foreach ( var item in attributes)
             {
+                if (item.Value is null) continue;
+
+                
                 Regex regex = new( "{" + item.Key.ToUpper() + "}" );
                 rendererd = regex.Replace(rendererd, item.Value );
             }

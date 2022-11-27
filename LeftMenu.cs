@@ -33,23 +33,19 @@ namespace MenuLibrary
             };
             return attr;
         }
-        private class DataType 
-        { 
-            public int order;
-            public string? row;
+        public class DataType 
+        {
+            public string row;
+            public MenuAttributes attributes;
 
-
-            public DataType(int order, string? row)
+            public DataType(MenuAttributes attributes, string row )
             {
-                    this.order = order;
-                    this.row = row;
+                this.attributes = attributes;
+                this.row = row;
             }
         }
-        public static string Display( List<Type> subClasses)
-        {
-            return Display(ToDict(), subClasses);
-        }
-        public static string Display(Dictionary<string, string> dict,  List<Type> subClasses)
+
+        public static string Display( List<Type> subClasses )
             {
                 List<DataType> controllerNames = new();
 
@@ -62,17 +58,17 @@ namespace MenuLibrary
                         if (ta is not null )
                         {
                             foreach (MenuAttributes lattr in ta)
-                            {  
-                                lattr.Route = MenuHelpers.GetRoute(controller, action);
+                            {
+                                    lattr.Route = MenuHelpers.GetRoute(controller, action);
 
-                                controllerNames.Add( new DataType( lattr.Order, BaseHtml.menu_line.Render( lattr.ToDict() ) + "\n" ) );
+                                    controllerNames.Add(new DataType(lattr , BaseHtml.menu_line.Render(lattr.ToDict()) + "\n" ) );
                             }
                         }
 
                     }
                 }
          
-                return MenuHelpers.ReadResource(  dict, controllerNames.OrderBy(o => o.order).Select(o => o.row).ToList());
+                return MenuHelpers.ReadResource( controllerNames);
             }
         }
 }
