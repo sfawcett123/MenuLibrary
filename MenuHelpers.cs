@@ -32,10 +32,8 @@ namespace MenuLibrary
                 {
                     big_string += "<ul>";
                     foreach ( var sub_level in children)
-                    {
-                        Console.WriteLine($"Item {sub_level}");
                         big_string += sub_level;
-                    }
+
                     big_string += "</ul>";
                 }
             }

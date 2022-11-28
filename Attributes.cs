@@ -44,7 +44,7 @@
                 {"Display"      , Display.ToString() },
                 {"ClassNavItem" , ClassNavItem } ,
                 {"ClassNavLink" , ClassNavLink } ,
-                {"Parent"       , Parent } ,
+                {"Parent"       , Parent ?? "" } ,
             };
             return attr;
         }
