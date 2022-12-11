@@ -1,0 +1,26 @@
+{
+  "name": "@sfawcett191/menulibrary",
+  "version": "0.0.0",
+  "description": "Menu library client side",
+  "scripts": {
+    "build": "gulp"
+  },
+  "author": "Steven Fawcett",
+  "license": "MIT",
+  "devDependencies": {
+    "browserify": "latest",
+    "chai": "^4.3.7",
+    "esmify": "^2.1.1",
+    "gulp": "^4.0.2",
+    "gulp-clean": "^0.4.0",
+    "mocha": "^10.1.0",
+    "vinyl-source-stream": "^2.0.0",
+    "webpack": "^5.75.0"
+  },
+  "overrides": {
+    "graceful-fs": "^4.2.10"
+  },
+  "files": [
+    "dist/**"
+  ]
+}
