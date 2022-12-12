@@ -14,7 +14,7 @@
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
     <IncludeSymbols>True</IncludeSymbols>
-    <Version>1.0.5</Version>
+    <Version>1.0.6</Version>
     <Authors>Steve Fawcett</Authors>
   </PropertyGroup>
 
