@@ -3,6 +3,11 @@
 A simple ASP.NET library to automate the production of the left hand menu. 
 This has probably been done elsewhere and more than likely better, but you don't learn unless you try.
 
+## Packages
+There are two packages included in this project:
+- [NuGet Package](https://www.nuget.org/packages/MenuLibrary/)
+- [npm Package](https://www.npmjs.com/package/@sfawcett191/menulibrary)
+
 ### Cookies
 This impemtation uses a cookie to track whether the menu is open or closed.
 
@@ -26,8 +31,6 @@ To include in your layouts page, you simply need to call the LeftMenu Method
 
 ```html
 @using MenuLibrary
-@Html.Raw( Menu.Css() )
-@Html.Raw( Menu.Scripts() )
 
 <body id=@Menu.BODY_ID>
     <header class="header" id="header">
