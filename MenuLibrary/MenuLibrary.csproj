@@ -12,12 +12,23 @@
     <AssemblyVersion>1.0.1.0</AssemblyVersion>
     <FileVersion>0.0.0.0</FileVersion>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
-    <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+    <PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
     <IncludeSymbols>False</IncludeSymbols>
     <Version>1.0.6</Version>
     <Authors>Steve Fawcett</Authors>
     <Copyright>Steven Fawcett</Copyright>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\LICENSE.txt">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
 
   <ItemGroup>
     <Compile Update="BaseHtml.Designer.cs">
