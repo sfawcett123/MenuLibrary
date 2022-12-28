@@ -5,20 +5,20 @@ var esmify = require('esmify');
 var source = require("vinyl-source-stream");
 
 function images( cb ) {
-    src('./wwwroot/img/*.*')
+    src('./MenuLibrary/wwwroot/img/*.*')
             .pipe(dest('dist/img/'));
     cb();
  }
 
  function css( cb ) {
-    src('./wwwroot/css/*.css')
+     src('./MenuLibrary/wwwroot/css/*.css')
             .pipe(dest('dist/css/'));
     cb();
  }
 
  function javascripts() {
     return browserify({
-        entries: './wwwroot/js/menu.js',
+        entries: './MenuLibrary/wwwroot/js/menu.js',
         debug: true,
         standalone: 'menu',
         plugin: [ esmify ]

@@ -359,5 +359,9 @@ MigrationBackup/
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
 
-# Fody - auto-generated XML schema
-FodyWeavers.xsd.DS_Store
+/.vs/
+/MenuLibrary/bin
+/MenuLibrary/obj
+/bin
+/MenuLibraryTest/bin
+/MenuLibraryTest/obj
