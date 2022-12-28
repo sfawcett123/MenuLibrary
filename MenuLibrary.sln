@@ -14,8 +14,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{
 	ProjectSection(SolutionItems) = preProject
 		.github\workflows\dotnet.yml = .github\workflows\dotnet.yml
 		.github\workflows\label.yml = .github\workflows\label.yml
-		.github\workflows\publish.yml = .github\workflows\publish.yml
-		.github\workflows\sonar.yml = .github\workflows\sonar.yml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{285425FD-0FA1-493B-B0A6-6697EB819982}"
@@ -33,6 +31,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NPM", "NPM", "{3BAEE8FF-F13
 		package.json = package.json
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MenuLibraryTest", "MenuLibraryTest\MenuLibraryTest.csproj", "{7DC5EA0A-02D5-4C20-97EC-2A634C14B7E2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +43,10 @@ Global
 		{C6CE012E-3AAC-49D4-8B93-855188CD4A66}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C6CE012E-3AAC-49D4-8B93-855188CD4A66}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C6CE012E-3AAC-49D4-8B93-855188CD4A66}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7DC5EA0A-02D5-4C20-97EC-2A634C14B7E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DC5EA0A-02D5-4C20-97EC-2A634C14B7E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DC5EA0A-02D5-4C20-97EC-2A634C14B7E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DC5EA0A-02D5-4C20-97EC-2A634C14B7E2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

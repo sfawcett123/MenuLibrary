@@ -1,5 +1,7 @@
 # Menu Library
 
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=sfawcett123_MenuLibrary&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=sfawcett123_MenuLibrary)
+
 A simple ASP.NET / NPM library to automate the production of the left hand menu. 
 
 This has probably been done elsewhere and more than likely better, but you don't learn unless you try.
