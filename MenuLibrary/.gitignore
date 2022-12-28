@@ -17,6 +17,8 @@
 mono_crash.*
 
 # Build results
+MenuLibrary/[Dd]ist/css
+[Dd]ist/
 [Dd]ebug/
 [Dd]ebugPublic/
 [Rr]elease/
