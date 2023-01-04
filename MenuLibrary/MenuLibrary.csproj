@@ -9,12 +9,9 @@
     <PackageProjectUrl>https://github.com/sfawcett123/MenuLibrary</PackageProjectUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <RepositoryUrl>https://github.com/sfawcett123/MenuLibrary</RepositoryUrl>
-    <AssemblyVersion>1.0.1.0</AssemblyVersion>
-    <FileVersion>0.0.0.0</FileVersion>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
     <PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
     <IncludeSymbols>False</IncludeSymbols>
-    <Version>1.0.6</Version>
     <Authors>Steve Fawcett</Authors>
     <Copyright>Steven Fawcett</Copyright>
   </PropertyGroup>
