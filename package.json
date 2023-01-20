@@ -1,6 +1,5 @@
 {
   "name": "@sfawcett191/menulibrary",
-  "version": "0.0.0",
   "description": "Menu library client side",
   "scripts": {
     "build": "gulp"
