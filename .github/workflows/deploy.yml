@@ -1,4 +1,4 @@
-name: Build/Test/Deploy
+name: Build/Test/Deliver
 on:
   push:
     branches:
@@ -15,7 +15,11 @@ permissions:
   pull-requests: write
   
 jobs:
-   deliver:
+   npm:
+      uses: sfawcett123/workflows/.github/workflows/npm.yml@main
+      secrets:
+         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+   dotnet:
       uses: sfawcett123/workflows/.github/workflows/BUILD_TEST_DEPLOY.yml@main
       with:
         SONAR_KEY: sfawcett123_MenuLibrary
