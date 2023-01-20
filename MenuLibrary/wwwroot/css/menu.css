@@ -100,14 +100,6 @@
                 color: var(--header-hover-color);
             }
 
-        .wrapper .section .top_navbar .connected {
-            color: greenyellow;
-        }
-
-        .wrapper .section .top_navbar .disconnected {
-            color: red;
-        }
-
     body.active .wrapper .sidebar {
         left: -255px;
     }
