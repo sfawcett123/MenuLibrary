@@ -17,6 +17,7 @@
     "vinyl-source-stream": "^2.0.0",
     "webpack": "^5.75.0"
   },
+  "release": { "branches": [ "master" ] },
   "overrides": {
     "graceful-fs": "^4.2.10"
   },
