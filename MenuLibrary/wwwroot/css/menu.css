@@ -1,7 +1,4 @@
-﻿@import url('./site.css');
-
-
-.wrapper .sidebar {
+﻿.wrapper .sidebar {
     background: var(--left-menu-background-color);
     position: fixed;
     top: 0;
