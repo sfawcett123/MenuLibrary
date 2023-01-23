@@ -1,6 +1,7 @@
 # Menu Library
 
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=sfawcett123_MenuLibrary&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=sfawcett123_MenuLibrary)
+[![codecov](https://codecov.io/gh/sfawcett123/MenuLibrary/branch/master/graph/badge.svg?token=XOKNKO7RMM)](https://codecov.io/gh/sfawcett123/MenuLibrary)
 
 A simple ASP.NET / NPM library pair to automate the production of the left hand menu. 
 
