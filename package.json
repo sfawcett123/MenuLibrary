@@ -15,7 +15,7 @@
     "mocha": "^10.1.0",
     "vinyl-source-stream": "^2.0.0",
     "semantic-release": "21.0.7",
-    "webpack": "^5.88.2"
+    "webpack": "^5.90.0"
   },
   "release": { "branches": [ "master" ] },
   "overrides": {
