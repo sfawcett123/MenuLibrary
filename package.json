@@ -8,7 +8,7 @@
   "license": "MIT",
   "devDependencies": {
     "browserify": "latest",
-    "chai": "^4.3.7",
+    "chai": "^5.0.3",
     "esmify": "^2.1.1",
     "gulp": "^4.0.2",
     "gulp-clean": "^0.4.0",
